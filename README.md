@@ -38,12 +38,29 @@ Le fichier `.nojekyll` est présent pour servir le site tel quel, sans traitemen
 
 ```
 .
-├── index.html      # Le prototype complet (HTML + CSS + JS)
+├── index.html      # Structure de la page + un script IIFE resté inline
+├── css/
+│   └── styles.css  # Tous les styles
+├── js/             # Code découpé par fonctionnalité (scripts classiques, chargés dans l'ordre)
+│   ├── splash-onboarding.js      # Écran d'accueil + choix du rôle
+│   ├── data-nextcloud.js         # Données des apps EVAD Connect
+│   ├── data-reseau.js            # Données réseau / parcours REGEN
+│   ├── regen-loop.js             # Boucle REGEN réutilisable
+│   ├── app-core.js               # Cœur : navigation, écrans, carte, données
+│   ├── deva.js                   # Assistant Deva
+│   ├── nav-mobile.js             # Barre de navigation mobile
+│   ├── auth.js                   # Fenêtre de connexion
+│   ├── espace-modal.js           # Fermeture de la modale espace
+│   ├── quetes.js                 # Quêtes & perma-comptabilité
+│   ├── contribution.js           # Saisie de contribution
+│   └── fil-rouge-visite-feedback.js  # Lieu actif partagé + visite guidée + retours
 ├── Deva.png        # Avatar de l'assistant Deva
 ├── .nojekyll       # Sert le site sans traitement Jekyll (GitHub Pages)
 ├── .gitignore
 └── README.md
 ```
+
+> Note : les fichiers JS sont des **scripts classiques** chargés dans l'ordre (pas des modules ES). Ils partagent la portée globale, ce qui préserve les nombreux gestionnaires `onclick` du HTML.
 
 ## Technique
 
